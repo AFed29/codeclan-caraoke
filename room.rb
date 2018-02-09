@@ -1,0 +1,27 @@
+class Room
+  attr_reader(:size, :guests)
+
+  def initialize(size, guests = [], songs = [])
+    @size = size
+    @guests = guests
+    @songs = songs
+  end
+
+  def add_guest_to_room(guest)
+      @guests.push(guest)
+  end
+
+  def remove_guest_from_room(guest)
+    @guests.delete(guest)
+  end
+
+  def add_group_of_guests_to_room(guests)
+    guests.each { |guest| @guests.push(guest)}
+  end
+
+  def remove_group_of_guests_from_room(guests)
+    guests.each { |guest| @guests.delete(guest) }
+  end
+
+
+end
