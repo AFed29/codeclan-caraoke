@@ -10,5 +10,8 @@ class TestKaraokeBar < MiniTest::Test
 
   end
 
+def test_check_bar_has_name
+  assert_equal("The Mercury", @bar.name())
+end
 
 end
