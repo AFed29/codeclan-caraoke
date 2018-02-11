@@ -57,7 +57,12 @@ class TestKaraokeBar < MiniTest::Test
     room = Room.new("Sam & Dave", 3, [@guest1, @guest2, @guest3])
     @bar.guest_checking_into_room(@guest4, room)
     assert_equal(3, room.guests().count())
-    assert_equal(200.00, @bar.till)
+  end
+
+  def test_single_guest_checking_into_room__cannot_afford
+    guest = Guest.new("Bob", 5.00)
+    @bar.guest_checking_into_room(guest, @room1)
+    assert_equal(0, @room1.guests().count())
   end
 
 end

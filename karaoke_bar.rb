@@ -16,8 +16,11 @@ class KaraokeBar
   def guest_checking_into_room(guest, chosen_room)
     @rooms.each do |room|
       if (room == chosen_room && room.guests().count < room.size())
-        room.add_guest_to_room(guest)
-        add_money_to_till()
+        if (guest.wallet() >= @entry_fee)
+          room.add_guest_to_room(guest)
+          guest.remove_money(@entry_fee)
+          add_money_to_till()
+        end
       end
     end
   end
