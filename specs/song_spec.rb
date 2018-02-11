@@ -14,6 +14,4 @@ class TestSong < MiniTest::Test
     assert_equal("a-ha", @song1.artist())
   end
 
-
-
 end
