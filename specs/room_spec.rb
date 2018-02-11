@@ -15,7 +15,7 @@ class TestRoom < MiniTest::Test
     @song1 = Song.new("Don't Stop Me Now", "Queen")
   end
 
-  def test_check_room_has_name
+  def test_check_room_has_name()
     assert_equal("Prince", @room.name())
   end
 
