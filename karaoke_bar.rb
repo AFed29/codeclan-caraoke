@@ -1,7 +1,7 @@
 class KaraokeBar
   attr_reader(:name, :till, :entry_fee, :rooms, :songs)
 
-  def initialize(name, till, entry_fee, rooms = [], songs = [])
+  def initialize(name, till, entry_fee, rooms, songs = [])
     @name = name
     @till = till
     @entry_fee = entry_fee
@@ -27,9 +27,7 @@ class KaraokeBar
 
   def guest_checking_out_of_room(guest, chosen_room)
     @rooms.each do |room|
-      if room == chosen_room
-        room.remove_guest_from_room(guest)
-      end
+      room.remove_guest_from_room(guest) if room == chosen_room  
     end
   end
 
