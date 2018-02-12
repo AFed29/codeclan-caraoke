@@ -1,3 +1,4 @@
+require('pry')
 require('minitest/autorun')
 require_relative('../karaoke_bar')
 require_relative('../guest')
@@ -14,6 +15,7 @@ class TestKaraokeBar < MiniTest::Test
     @group1 = [@guest1, @guest2, @guest3]
 
     @room1 = Room.new("MJ", 5)
+    @room2 = Room.new("Sam & Dave", 3, [@guest1, @guest2, @guest3])
 
     song1 = Song.new("Bohemian Rhapsody", "Queen")
     song2 = Song.new("I'm Gonna Be (500 Miles)", "The Proclaimers")
@@ -54,15 +56,19 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_single_guest_checking_into_room__no_space()
-    room = Room.new("Sam & Dave", 3, [@guest1, @guest2, @guest3])
-    @bar.guest_checking_into_room(@guest4, room)
-    assert_equal(3, room.guests().count())
+    @bar.guest_checking_into_room(@guest4, @room2)
+    assert_equal(3, @room2.guests().count())
   end
 
   def test_single_guest_checking_into_room__cannot_afford
     guest = Guest.new("Bob", 5.00)
     @bar.guest_checking_into_room(guest, @room1)
     assert_equal(0, @room1.guests().count())
+  end
+
+  def test_guest_checking_out_of_room
+    @bar.guest_checking_out_of_room(@guest1, @room2)
+    assert_equal(2, @room2.guests().count())
   end
 
 end

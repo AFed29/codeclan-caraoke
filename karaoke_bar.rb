@@ -25,4 +25,12 @@ class KaraokeBar
     end
   end
 
+  # def guest_checking_out_of_room(guest, chosen_room)
+  #   for room in @rooms
+  #     if room == chosen_room
+  #       room.remove_guest_from_room(guest)
+  #     end
+  #   end
+  # end
+
 end
