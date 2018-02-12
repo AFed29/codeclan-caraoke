@@ -21,7 +21,7 @@ class TestKaraokeBar < MiniTest::Test
     song2 = Song.new("I'm Gonna Be (500 Miles)", "The Proclaimers")
     song3 = Song.new("Don't Stop Believing", "Journey")
 
-    @bar = KaraokeBar.new("The Mercury", 200.00, 10.00, [@room1], [song1, song2, song3])
+    @bar = KaraokeBar.new("The Mercury", 200.00, 10.00, [@room1, @room2], [song1, song2, song3])
   end
 
   def test_check_bar_has_name()
@@ -37,7 +37,7 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_check_bar_has_rooms()
-    assert_equal(1, @bar.rooms().count())
+    assert_equal(2, @bar.rooms().count())
   end
 
   def test_bar_has_songs()
